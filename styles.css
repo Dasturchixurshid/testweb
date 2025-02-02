@@ -8,7 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Yuqoriga joylashtirish */
+    justify-content: flex-start;
     min-height: 100vh;
     padding-top: 70px; /* Navbar uchun joy */
 }
@@ -33,23 +33,24 @@ body {
     margin-right: 20px;
 }
 
+#sitelogo, #profile-icon {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
 #sitelogo {
     margin-left: 20px;
     width: 60px;
     height: 60px;
-    cursor: pointer;
-    border: none;
-    background: none;
 }
 
 #profile-icon {
     width: 40px;
     height: 40px;
-    cursor: pointer;
-    border: none;
-    background: none;
 }
 
+/* Dropdown menyu */
 .dropdown {
     display: none;
     position: absolute;
@@ -59,6 +60,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     z-index: 1001;
+    transition: opacity 0.3s ease;
 }
 
 .dropdown ul {
@@ -81,6 +83,7 @@ body {
 .profile-menu:hover .dropdown,
 .profile-menu:focus-within .dropdown {
     display: block;
+    opacity: 1;
 }
 
 /* Title */
@@ -88,7 +91,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     position: absolute;
-    top: 20px; /* Yuqoriroqqa ko'tarildi */
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -107,11 +110,10 @@ body {
 }
 
 /* Submenu va sub-submenu */
-/* Submenu va sub-submenu */
 .submenu, .sub-submenu {
     display: none;
     position: absolute;
-    background: #fff;
+    background: #04f839;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     z-index: 1002;
@@ -120,12 +122,12 @@ body {
 }
 
 .submenu {
-    left: 100%;
+    right: 100%;
     top: 0;
 }
 
 .sub-submenu {
-    left: 100%;
+    right: 100%;
     top: 0;
 }
 
@@ -137,10 +139,9 @@ body {
 
 /* Autoscrolling bo‘lim */
 #autoscroll {
-    margin-top: 0px; /* Navbar bo'sh joyi */
     padding: 15px;
     text-align: center;
-    z-index: 999; /* Pastki menyulardan yuqoriga */
+    z-index: 999;
 }
 
 /* Pastki menyular */
@@ -150,17 +151,62 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-around;
-    background: #fff;
+    background: #2196F3;
     padding: 10px;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
 
-.menu-item img {
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
+.menu-item {
+    text-align: center;
+    padding: 5px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
 }
+
+.menu-item img {
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.menu-item a {
+    display: block;
+}
+
+/* Menyu belgisining hover effekti */
+.menu-item:hover {
+    background-color: #f8f9fa;
+    color: #495057;
+}
+
+
+/* Faol (tanlangan) menyu */
+.menu-item.active {
+    transform: scale(1.2); /* Elementni kattalashtirish */
+    position: relative;
+}
+
+.menu-item.active img {
+    width: 35px; /* Rasmni kattalashtirish */
+    height: 35px;
+}
+
+/* Orqa fonga yashil effekt qo'shish */
+.menu-item.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 50px;
+    background: rgba(248, 14, 14, 0.308); /* Yorqin yashil effekt */
+    border-radius: 50%;
+    box-shadow: 0 5 10px rgba(0, 255, 0, 0.5); /* Yorqin porlash */
+}
+
 
 /* Theme o‘zgarishi */
 .light {
